@@ -3,22 +3,37 @@ import './WordCard.css'
 
 export default function WordCard(props) {
     const definitionAndPartofSpeech = props.results.map(result => {
-        return <li>({result.partOfSpeech}) {result.definition}</li>
+        return (
+            <div>
+                <li>({result.partOfSpeech}) {result.definition}</li>
+            </div>
+        )
     })
 
-    const synonymButton = () => {
-        return <button>SYNONYMS</button>
+    const definition = props.results.map(result => {
+        return (result.definition)
+    })
+
+    function speak () {
+        var msg = new SpeechSynthesisUtterance(props.word)
+        var voices = window.speechSynthesis.getVoices()
+        msg.voice = voices[0]
+        window.speechSynthesis.speak(msg)
     }
-   
-    console.log(props.word)
+    function readDefinition () {
+        var msg = new SpeechSynthesisUtterance(definition)
+        var voices = window.speechSynthesis.getVoices()
+        msg.voice = voices[0]
+        window.speechSynthesis.speak(msg)
+    }
 
     return (
-        <div className='word-card' key={props.word.id}>
-            {/* <h1 className='word-name'>{props.word}</h1> */}
-            <h3 className='definition-list'>
+        <div className='word-card'  >
+            <h1 className='word-name' onClick={speak}>{props.word}</h1>
+            <h3 className='definition-list' onClick={readDefinition}>
                 <ul>
                     {definitionAndPartofSpeech}
-                    {synonymButton()}
+                    {/* {synonyms} */}
                 </ul>
             </h3>
         </div>

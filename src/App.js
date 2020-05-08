@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import Toolbar from './components/Toolbar/Toolbar'
 import WordContainer from './containers/WordContainer'
+import VocabularyWords from './containers/VocabularyWords'
 import './App.css'
 
 
@@ -10,8 +11,14 @@ class App extends Component {
     super()
     this.state = {
       word: "",
-      results: []
+      results: [],
+      vocabularyWords : []
     }
+  }
+
+  addToVocab = (word) => {
+    if(!this.state.vocabularyWords.find(vocabWord => vocabWord === word)){
+      this.setState({vocabularyWords: [...this.state.vocabularyWords, word]})}
   }
 
   setWord = (event) => {
@@ -63,7 +70,8 @@ class App extends Component {
               <input id="submit" type="submit" value="Search" />
             </form>
           </div>
-          <WordContainer word={this.state.word} results={this.state.results}/>
+          <WordContainer word={this.state.word} results={this.state.results} action={this.addToVocab}/>
+          <VocabularyWords vocabWords={this.state.vocabularyWords} results={this.state.results}/>
         </main>
       </div>
     )

@@ -38,22 +38,32 @@
 } */
 
 @import url('https://fonts.googleapis.com/css?family=Raleway:800&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Galada&display=swap');
 
 
 body {
   display: flex;
   flex-direction: column;
   height: 100vh;
-  background: rgb(165, 164, 164);
+  background: #5CDB95;
   align-items: center;
 }
 
 
-.welcome, p {
+.welcome {
   text-align: center;
-  font-family: sans-serif;
+  font-family: 'Galada', cursive;
+  font-size: 4rem;
   color:white;
 }
+
+p {
+  text-align: center;
+  font-family: 'Galada', cursive;
+  font-size: 1.5rem;
+  color:white;
+}
+
 
 form {
   margin: auto;

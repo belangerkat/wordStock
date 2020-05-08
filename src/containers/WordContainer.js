@@ -9,7 +9,7 @@ export default function WordContainer(props) {
     return (
         <div className='word-container'>
             <div className='word'>
-                <WordCard word={props.word} results={props.results} />
+                <WordCard word={props.word} results={props.results} action={props.action} />
             </div>
         </div>
 
